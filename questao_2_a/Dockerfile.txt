@@ -1,0 +1,14 @@
+# Use a imagem base do Python
+FROM python:3.9
+
+# Copie os arquivos do projeto para o diretório de trabalho no contêiner
+COPY . /app
+
+# Defina o diretório de trabalho
+WORKDIR /app
+
+# Instale as dependências do Python
+RUN pip install opencv-python-headless numpy
+
+# Execute o script Python quando o contêiner for iniciado
+CMD ["python", "questao_2_a.py"]
