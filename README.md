@@ -1,7 +1,7 @@
 # Prova-pratica-de-visao-computacional
 Nesse repositório estão as resoluções das três questões solicitadas, essas estão descritas abaixo.
 
-Questões socitadas: 
+Questões solicitadas: 
 
 **1.**	Seja a imagem satelital com ruído de fundo salt & pepper (PSNR=25dB), inserida na pasta questão 2 denominada airport_gray_noisy.png. Implemente um código com alguma técnica para remoção parcial do ruído apresentado
 
