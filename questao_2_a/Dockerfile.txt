@@ -4,7 +4,7 @@ FROM python:3.9
 # Instala as dependências necessárias
 RUN pip install opencv-python-headless numpy
 
-# Copie os arquivos necessários para dentro do contêiner
+# Copia os arquivos necessários para dentro do contêiner
 COPY questao_2_a.py /
 COPY airport.png /
 
