@@ -35,14 +35,14 @@ print("PSNR antes do processamento:", round(psnr_antesProcess, 4), "dB")
 tam_kernel = 7 # tamanho do kernel, que determina a vizinhança sobre a qual a mediana é calculada. 
 imagem_filtrada = cv2.medianBlur(imagem_ruidosa, tam_kernel) 
 
-# Salvar a imagem filtrada
+# Salvando a imagem filtrada.
 cv2.imwrite('airport_gray_filtrado.png', imagem_filtrada)
 
 # Verificando o valor PSNR após aplicar o filtro mediano na imagem:
 psnr_depoisProcess = psnr(imagem_originalSemruido, imagem_filtrada)
 print("PSNR depois de aplicar o filtro mediano:", round(psnr_depoisProcess, 4), "dB")
 
-# Mostrar a imagem original e a imagem sem ruído
+# Ilustrando a imagem original sem ruido, imagem com ruido e imagem filtrada.
 cv2.imshow('Imagem Original Sem Ruido', imagem_originalSemruido)
 cv2.imshow('Imagem Com Ruido', imagem_ruidosa)
 cv2.imshow('Imagem Filtrada', imagem_filtrada)
