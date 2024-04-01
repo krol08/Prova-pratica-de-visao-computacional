@@ -23,7 +23,7 @@ caminho_imagens = ['8band_AOI_1_RIO_img46.tif', '8band_AOI_1_RIO_img47.tif', '8b
 fig, axs = plt.subplots(2, 2, figsize=(10, 10))
 
 """
- Explicação das 8 bandas esctrais:
+ Explicação das 8 bandas espectrais:
      
     0. Banda Espectral Panchromática (Pan);
 
