@@ -1,7 +1,7 @@
 # Imagem base Python com OpenCV
 FROM python:3.9
 
-# Instala as dependências necessárias
+# Instala as bibliotecas necessárias
 RUN pip install opencv-python-headless numpy
 
 # Copia os arquivos necessários para dentro do contêiner
