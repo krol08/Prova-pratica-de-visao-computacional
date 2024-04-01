@@ -13,11 +13,11 @@
 import cv2
 import numpy as np
 
-# Carregando a imagem
+# Carregando a imagem.
 image = cv2.imread('airport.png')
 
 """
- Converter a imagem para o espaço de cores HSV (Hue, Saturation, Value).
+ Convertendo a imagem para o espaço de cores HSV (Hue, Saturation, Value).
  Como observei na imagem que a pista possui uma cor mais cinza que os demais objetos da imagem, optou-se por converter
  a imagem para o espaço de cores HSV. Esse espaço de cores é frequentemente usada em tarefas de processamento de imagem onde 
  a cor desempenha um papel importante como na detecção e segmentação de objetos baseada em cor.
@@ -25,7 +25,7 @@ image = cv2.imread('airport.png')
 
 hsv_imagem = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
-# Definir os intervalos de cor que acredita-se que destaque a pista do aeroporto.
+# Definindo os intervalos de cor que acredita-se que a pista do aeroporto fique destacada.
 lower_bound = np.array([0, 0, 0])
 upper_bound = np.array([50, 60, 255])  # Valores ajustados conforme necessário.
                                        # 50 é o valor máximo para o Hue, 60 é o valor máximo para a Saturação, e 255.
@@ -81,8 +81,8 @@ imagem_comRetangulos = image.copy()  # Criar uma cópia da imagem original
 x, y, w, h = cv2.boundingRect(maior_contorno)
 cv2.rectangle(imagem_comRetangulos, (x, y), (x + w, y + h), (0, 255, 0), 2)  # Desenha um retângulo em verde.
 
-# Ilustra a imagem com o retângulo detectado.
-cv2.imshow('Pista do aeroporto destacada', imagem_comRetangulos)
+# Ilustra a imagem com o retângulo detectado (pista do aeroporto detectada).
+cv2.imshow('Pista do aeroporto detectada', imagem_comRetangulos)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
@@ -95,7 +95,7 @@ cv2.drawContours(mascara_2, [maior_contorno], -1, (255), thickness=cv2.FILLED)
 # Aplica a máscara na imagem original
 pixels_aero_destacados = cv2.bitwise_and(image, image, mask=mascara_2)
 
-# Mostra a imagem com apenas os pixels do maior contorno detectado
+# Mostra a imagem com apenas os pixels do maior contorno detectado.
 cv2.imshow('Pixels da pista do aeroporto', pixels_aero_destacados)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
