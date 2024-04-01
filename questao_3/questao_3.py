@@ -1,6 +1,6 @@
 """
 
-@author: karol
+@author: Karoline da Rocha
 """
 
 # Bibliotecas:
