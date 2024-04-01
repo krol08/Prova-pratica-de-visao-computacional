@@ -13,9 +13,8 @@
 import tifffile
 import matplotlib.pyplot as plt
 import rasterio
-import numpy as np
-from skimage import exposure, filters
-from sklearn.cluster import KMeans
+from skimage import exposure
+
 
 # Caminho para as imagens TIFF
 caminho_imagens = ['8band_AOI_1_RIO_img46.tif', '8band_AOI_1_RIO_img47.tif', '8band_AOI_1_RIO_img66.tif', '8band_AOI_1_RIO_img67.tif']
@@ -24,7 +23,7 @@ caminho_imagens = ['8band_AOI_1_RIO_img46.tif', '8band_AOI_1_RIO_img47.tif', '8b
 fig, axs = plt.subplots(2, 2, figsize=(10, 10))
 
 """
- Explicação das 8 bandas espectrais:
+ Explicação das 8 bandas esctrais:
      
     0. Banda Espectral Panchromática (Pan);
 
@@ -65,15 +64,18 @@ for i, caminho in enumerate(caminho_imagens):
     # Abrir a imagem TIFF
     imagem = tifffile.imread(caminho)
     
-    # Selecionando a primeira banda espectral para visualização.
-    banda_1 = imagem[:,:,5]
+    # Selecionando a quinta banda espectral para visualização.
+    banda_5 = imagem[:,:,5]
     
     # Plota a imagem no subplot correspondente
-    axs[i//2, i%2].imshow(banda_1, cmap='gray')
-    axs[i//2, i%2].axis('off')
+    
+    plt.subplot(2, 2, i+1)
+    
+    plt.imshow(banda_5, cmap='gray')
+    plt.title(f'Imagem {i+1}')
+    plt.axis('off')
 
-# Ilustras as imagens lidas.
-plt.tight_layout()
+plt.suptitle('Banda Red Edge de Cada Imagem')
 plt.show()
 
 # ----------------------------------------------------------------------------------------------------
@@ -114,30 +116,14 @@ for img in imagens_normalizadas:
     ndvi_imagens.append(ndvi)
 
 
-# Realizando a segmentação usando k-means.
-segmentando_vegetacao_imagens = []
-for ndvi in ndvi_imagens:
-    kmeans = KMeans(n_clusters=3)
-    ndvi_reshaped = ndvi.reshape((-1, 1))
-    kmeans.fit(ndvi_reshaped)
-    segmentando_vegetacao = kmeans.labels_.reshape(ndvi.shape)
-    segmentando_vegetacao_imagens.append(segmentando_vegetacao)
-
-# Removendo o ruído e visualizando a segmentação obtida.
+# Visualizando a segmentação obtida.
 plt.figure(figsize=(10, 10))
-for i, segmentando_vegetacao in enumerate(segmentando_vegetacao_imagens):
+for i, segmentando_vegetacao in enumerate(ndvi_imagens):
     plt.subplot(2, 2, i+1)
     
-    # Eliminando ruídos da imagem.
-    segmentando_vegetacao = filters.median(segmentando_vegetacao, footprint=np.ones((3,3)))
     plt.imshow(segmentando_vegetacao, cmap='gray')
     plt.title(f'Imagem {i+1}')
     plt.axis('off')
 
 plt.suptitle('Segmentação da Vegetação')
 plt.show()
-
-"""
-    Comentário: A segmentação não funcionou corretamente.
-"""
-
