@@ -24,4 +24,4 @@ Nesse repositório estão as resoluções das três questões solicitadas, essas
 
 **3.**	Seja o conjunto de dados disponibilizado na pasta questão 3 (imagens e anotações em arquivo .json associado à construções, sobre imagens satelitais), implemente algum modelo responsável pela segmentação das residências presentes as imagens satelitais disponibilizadas.
 
-- A resolução dessa questão e os arquivos necessários estão na pasta "questao_3".
+- A resolução dessa questão está incompleta, o que foi feito está na pasta "questao_3".
