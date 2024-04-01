@@ -1,0 +1,15 @@
+# Imagem base Python com OpenCV
+FROM python:3.9
+
+# Instala as dependências necessárias
+RUN pip install tifffile matplotlib rasterio scikit-image
+
+# Copia os arquivos necessários para dentro do contêiner
+COPY questao_2_b.py /
+COPY 8band_AOI_1_RIO_img46.tif /
+COPY 8band_AOI_1_RIO_img47.tif /
+COPY 8band_AOI_1_RIO_img66.tif /
+COPY 8band_AOI_1_RIO_img67.tif /
+
+# Comando padrão para ser executado quando o contêiner for iniciado
+CMD ["python", "/questao_2_b.py"]
